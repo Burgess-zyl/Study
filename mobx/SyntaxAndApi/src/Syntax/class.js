@@ -33,9 +33,9 @@ Dog.prototype = Object.create(Animal.prototype, {
     }
 })
 
-document.write(new Dog().say())
-document.write('<br/>')
-document.write(Dog.prototype.constructor)
+// document.write(new Dog().say())
+// document.write('<br/>')
+// document.write(Dog.prototype.constructor)
 
 // class实现继承
 class Animal1 {
