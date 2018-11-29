@@ -1,5 +1,0 @@
-import './Syntax/class'
-import './Syntax/decorator'
-import './Api/observable'
-import './Api/method'
-import './mobx-react/index'
