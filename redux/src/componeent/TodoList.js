@@ -1,6 +1,7 @@
-import React, { Fragment, Component } from 'react'
-import { Input, List, Button } from 'antd'
+import React, { Component } from 'react'
 import store from '../redux/index'
+import TodoListUI from './TodoListUI'
+import axios from 'axios'
 import { getInputChangeAction, getAddTodoItemAction, getDelTodoItemAction } from '../redux/actionCreator'
 class TodoList extends Component {
     constructor (props) {
@@ -14,31 +15,19 @@ class TodoList extends Component {
     }
     render() {
         return (
-            <Fragment>
-                <Input
-                    style={{ width: "400px", margin: "5px" }}
-                    placeholder="输入待做事项"
-                    value={this.state.inputValue}
-                    onChange={this.handleChange}
-                >
-                </Input>
-                <Button
-                    onClick={this.handleBtnClick}
-                >
-                    提交
-                </Button>
-                <List
-                    style={{ width: "470px", margin: "auto" }}
-                    bordered
-                    dataSource={this.state.list}
-                    renderItem={(item, index) => (
-                        <List.Item actions={[<a onClick={() => {this.handleDelItem(index)}}>del</a>]}>
-                            {item}
-                        </List.Item>
-                    )}
-                />
-            </Fragment>
+            <TodoListUI
+                inputValue={this.state.inputValue}
+                list={this.state.list}
+                handleChange={this.handleChange}
+                handleBtnClick={this.handleBtnClick}
+                handleDelItem={this.handleDelItem}
+            />
         )
+    }
+    componentDidMount () {
+        axios.get('./list.json').then(resp => {
+            
+        })
     }
     handleStoreChange () {
         this.setState(store.getState())
