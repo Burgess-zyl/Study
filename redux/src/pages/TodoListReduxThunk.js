@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import store from '../redux/index'
-import TodoListUI from './TodoListUI'
-import axios from 'axios'
-import { getInputChangeAction, getAddTodoItemAction, getDelTodoItemAction } from '../redux/actionCreator'
-class TodoList extends Component {
+import store from 'store/indexThunk'
+import TodoListUI from 'components/TodoListUI'
+import { getInputChangeAction, getAddTodoItemAction, 
+    getDelTodoItemAction, getTodoList } from 'store/actionCreator'
+class TodoListReduxThunk extends Component {
     constructor (props) {
         super(props)
         this.state = store.getState()
@@ -25,9 +25,8 @@ class TodoList extends Component {
         )
     }
     componentDidMount () {
-        axios.get('./list.json').then(resp => {
-            
-        })
+        const action = getTodoList()
+        store.dispatch(action)
     }
     handleStoreChange () {
         this.setState(store.getState())
@@ -46,4 +45,4 @@ class TodoList extends Component {
     }
 }
 
-export default TodoList
+export default TodoListReduxThunk
