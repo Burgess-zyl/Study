@@ -3,6 +3,7 @@ import './App.css';
 import TodoListRedux from 'pages/TodoListRedux'
 import TodoListReduxThunk from 'pages/TodoListReduxThunk'
 import TodoListReduxSaga from 'pages/TodoListReduxSaga'
+import TodoListReactRedux from 'pages/ReactRedux'
 import 'antd/dist/antd.css'
 class App extends Component {
   render() {
@@ -14,6 +15,8 @@ class App extends Component {
         <TodoListReduxThunk />
         <h3>Redux-saga TodoList</h3>
         <TodoListReduxSaga />
+        <h4>React-redux TodoList</h4>
+        <TodoListReactRedux />
       </div>
     );
   }
