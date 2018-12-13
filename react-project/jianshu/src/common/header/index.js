@@ -1,65 +1,39 @@
 import React, { Component } from 'react';
-import { HeaderWraper, 
-    Logo, 
-    Nav, 
-    NavItem, 
-    NavSearch, 
-    Addition, 
-    Button, 
-    SearchWrapper } from './style'
+import { connect } from 'react-redux'
+import { actionCreators } from './store'
+import HeaderUI from './UI'
+
 class Header extends Component {
-    constructor (props) {
-        super(props)
-        this.state = {
-            focused: false
-        }
-        this.handleFocus = this.handleFocus.bind(this)
-        this.handleBlur = this.handleBlur.bind(this)
-    }
-
-    render() {
+    render () {
+        const { focused, hotSearch, handleFocus, handleBlur } = this.props
         return (
-            <div className="App">
-            <HeaderWraper>
-                <Logo href="/" />
-                <Nav>
-                <NavItem className="left active">首页</NavItem>
-                <NavItem className="left">关注</NavItem>
-                <NavItem className="left">消息</NavItem>
-                <SearchWrapper>
-                    <NavSearch placeholder="搜索"
-                        className={this.state.focused ? 'focused' : ''}
-                        onFocus={this.handleFocus}
-                        onBlur={this.handleBlur}
-                    >
-                    </NavSearch>
-                    <i className={`iconfont ${ this.state.focused ? 'focused' : '' }`}>&#xe62b;</i>
-                </SearchWrapper>
-                <NavItem className="right">登录</NavItem>
-                <NavItem className="right"></NavItem>
-                </Nav>
-                <Addition>
-                    <Button className="writing">
-                        <i className="iconfont">&#xe616;</i>
-                        写文章
-                    </Button>
-                    <Button className="register">注册</Button>
-                </Addition>
-            </HeaderWraper>
-            </div>
-        );
-    }
-
-    handleFocus () {
-        this.setState({
-            focused: true
-        })
-    }
-    handleBlur () {
-        this.setState({
-            focused: false
-        })
+            <HeaderUI 
+                focused={focused}
+                handleFocus={handleFocus}
+                handleBlur={handleBlur}
+                hotSearch={hotSearch}
+            />
+        )
     }
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+    return {
+        focused: state.getIn(['header', 'focused']),
+        hotSearch: state.getIn(['header', 'hotSearch']),
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleFocus () {
+            dispatch(actionCreators.getHotSearchList())
+            dispatch(actionCreators.searchFocus())
+        },
+        handleBlur () {
+            dispatch(actionCreators.searchBlur())
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

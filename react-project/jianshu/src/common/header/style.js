@@ -43,7 +43,7 @@ export const NavItem = styled.div`
 export const SearchWrapper = styled.div`
     position: relative;
     float: left;
-    .iconfont {
+    .search {
         position: absolute;
         right: 5px;
         bottom: 5px;
@@ -76,6 +76,49 @@ export const NavSearch = styled.input`
     }
     &.focused {
         width: 320px;
+    }
+`
+
+export const SearchInfo = styled.div`
+    position: absolute;
+    left: 25px;
+    top: 56px;
+    width: 200px;
+    padding: 20px 20px 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+`
+
+export const SearchInfoTitle = styled.div`
+    margin-bottom: 10px;
+    line-height: 20px;
+    font-size: 14px;
+    color: #969696;
+`
+
+export const SearchInfoSwitch = styled.span`
+    float: right;
+    font-size: 13px;
+    .spin {
+        display: inline-block;
+        font-size: 12px;
+    }
+`
+
+export const SearchInfoTag = styled.a`
+    display: block;
+    float: left;
+    padding: 0 5px;
+    margin-right: 10px;
+    margin-bottom: 15px;
+    font-size: 12px;
+    line-height: 20px;
+    border: 1px solid #ddd;
+    color: #787878;
+    border-radius: 3px;
+    &:hover {
+        cursor: pointer;
+        color: #333;
+        border-color: #b4b4b4;
     }
 `
 
