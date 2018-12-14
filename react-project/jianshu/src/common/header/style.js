@@ -98,9 +98,12 @@ export const SearchInfoTitle = styled.div`
 export const SearchInfoSwitch = styled.span`
     float: right;
     font-size: 13px;
+    cursor: pointer;
     .spin {
         display: inline-block;
         font-size: 12px;
+        transition: all 0.2s ease-in;
+        transform-origin: center;
     }
 `
 

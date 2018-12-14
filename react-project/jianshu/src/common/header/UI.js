@@ -14,7 +14,63 @@ import { HeaderWraper,
 } from './style'
 
 const HeaderUI = (props) => {
-    const { focused, handleFocus, handleBlur, hotSearch } = props
+    const { focused,
+        mouseState,
+        handleFocus, 
+        handleBlur, 
+        hotSearch,
+        handleMouseEnter,
+        handleMouseLeave,
+        handleSwitch,
+        page,
+        totalPage } = props
+    const list = hotSearch.toJS()
+    const listShow = []
+    if (list.length) {
+        for (let i = (page - 1) * 10; i < page * 10; i++) {
+            if (i < list.length) {
+                listShow.push(list[i])
+            }
+        }
+    }
+    const rotationAngle = 360 * page
+    const spinSty = {
+        transform: `rotate(${rotationAngle}deg)`
+    }
+    const showSearchInfo = () => {
+        if (focused || mouseState) {
+            return (
+                <SearchInfo 
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                >
+                        <SearchInfoTitle>
+                            热门搜索
+                            <SearchInfoSwitch
+                                onClick={() => handleSwitch(page, totalPage)}
+                            >
+                                <i style={spinSty} className="iconfont spin">&#xe851;</i>
+                                换一批
+                            </SearchInfoSwitch>
+                        </SearchInfoTitle>
+                        <div>
+                            {
+                                listShow.map((item) => {
+                                    return (
+                                        <SearchInfoTag key={item}>
+                                            {item}
+                                        </SearchInfoTag>
+                                    )
+                                })
+                            }
+                        </div>
+                    </SearchInfo>
+            )
+        } else {
+            return null
+        }
+    }
+
     return (
         <HeaderWraper>
             <Logo href="/" />
@@ -25,12 +81,12 @@ const HeaderUI = (props) => {
             <SearchWrapper>
                 <NavSearch placeholder="搜索"
                     className={focused ? 'focused' : ''}
-                    onFocus={handleFocus}
+                    onFocus={() => handleFocus(hotSearch)}
                     onBlur={handleBlur}
                 >
                 </NavSearch>
                 <i className={`iconfont search ${ focused ? 'focused' : '' }`}>&#xe62b;</i>
-                {showSearchInfo(hotSearch, focused)}
+                {showSearchInfo()}
             </SearchWrapper>
             <NavItem className="right">登录</NavItem>
             <NavItem className="right"></NavItem>
@@ -46,33 +102,5 @@ const HeaderUI = (props) => {
     );
 }
 
-const showSearchInfo = (hotSearch, show) => {
-    if (show) {
-        return (
-            <SearchInfo>
-                    <SearchInfoTitle>
-                        热门搜索
-                        <SearchInfoSwitch>
-                            <i className="iconfont spin">&#xe851;</i>
-                            换一批
-                        </SearchInfoSwitch>
-                    </SearchInfoTitle>
-                    <div>
-                        {
-                            hotSearch.map((item, index) => {
-                                return (
-                                    <SearchInfoTag key={index}>
-                                        {item}
-                                    </SearchInfoTag>
-                                )
-                            })
-                        }
-                    </div>
-                </SearchInfo>
-        )
-    } else {
-        return null
-    }
-}
 
 export default HeaderUI

@@ -5,13 +5,28 @@ import HeaderUI from './UI'
 
 class Header extends Component {
     render () {
-        const { focused, hotSearch, handleFocus, handleBlur } = this.props
+        const { focused,
+            page,
+            totalPage,
+            hotSearch, 
+            handleFocus, 
+            handleBlur,
+            mouseState,
+            handleMouseEnter, 
+            handleMouseLeave,
+            handleSwitch } = this.props
         return (
             <HeaderUI 
                 focused={focused}
+                page={page}
+                totalPage={totalPage}
+                mouseState={mouseState}
                 handleFocus={handleFocus}
                 handleBlur={handleBlur}
                 hotSearch={hotSearch}
+                handleMouseEnter={handleMouseEnter}
+                handleMouseLeave={handleMouseLeave}
+                handleSwitch={handleSwitch}
             />
         )
     }
@@ -20,18 +35,36 @@ class Header extends Component {
 const mapStateToProps = (state) => {
     return {
         focused: state.getIn(['header', 'focused']),
+        mouseState: state.getIn(['header', 'mouseState']),
+        page: state.getIn(['header', 'page']),
+        totalPage: state.getIn(['header', 'totalPage']),
         hotSearch: state.getIn(['header', 'hotSearch']),
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleFocus () {
-            dispatch(actionCreators.getHotSearchList())
+        handleFocus (hotSearch) {
+            if (!hotSearch.size) {
+                dispatch(actionCreators.getHotSearchList())
+            }
             dispatch(actionCreators.searchFocus())
         },
         handleBlur () {
             dispatch(actionCreators.searchBlur())
+        },
+        handleMouseEnter () {
+            dispatch(actionCreators.mouseEnter())
+        },
+        handleMouseLeave () {
+            dispatch(actionCreators.mouseLeave())
+        },
+        handleSwitch (page, totalPage) {
+            if (page < totalPage) {
+                dispatch(actionCreators.switchSearchInfo(page + 1))
+            } else {
+                dispatch(actionCreators.switchSearchInfo(1))
+            }
         }
     }
 }
