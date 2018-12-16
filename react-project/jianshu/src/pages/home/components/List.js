@@ -1,16 +1,27 @@
 import React, { PureComponent } from 'react'
 import { ListItem, ListInfo } from '../style'
+import { connect } from 'react-redux'
 class List extends PureComponent {
     render () {
+        const { list } = this.props
+        const showList = list.toJS()
         return (
-            <ListItem>
-                <ListInfo>
-                    <h3 className="title">婚礼前夜｜微小说</h3>
-                    <p className="desc">那年，他，28岁。她，18岁。 他强暴了她。 他哭着跪在她的父母面前，说他恩将仇报，不配为人，他说他愿意自断手指以示惩戒。手起刀落瞬间，她的父亲...</p>
-                </ListInfo>
-            </ListItem>
+            showList.map((item) => {
+                return (
+                    <ListItem key={item.id}>
+                        <ListInfo>
+                            <h3 className="title">{item.title}</h3>
+                            <p className="desc">{item.content}</p>
+                        </ListInfo>
+                    </ListItem>
+                )
+            })
         )
     }
 }
 
-export default List
+const mapStateToProps = (state) => ({
+    list: state.getIn(['home', 'list'])
+})
+
+export default connect(mapStateToProps, null)(List)
