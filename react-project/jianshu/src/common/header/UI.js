@@ -12,6 +12,7 @@ import { HeaderWraper,
     SearchInfoSwitch,
     SearchInfoTag
 } from './style'
+import { Link } from 'react-router-dom'
 
 const HeaderUI = (props) => {
     const { focused,
@@ -73,23 +74,25 @@ const HeaderUI = (props) => {
 
     return (
         <HeaderWraper>
-            <Logo href="/" />
+            <Link to="/">
+                <Logo/>
+            </Link>
             <Nav>
-            <NavItem className="left active">首页</NavItem>
-            <NavItem className="left">关注</NavItem>
-            <NavItem className="left">消息</NavItem>
-            <SearchWrapper>
-                <NavSearch placeholder="搜索"
-                    className={focused ? 'focused' : ''}
-                    onFocus={() => handleFocus(hotSearch)}
-                    onBlur={handleBlur}
-                >
-                </NavSearch>
-                <i className={`iconfont search ${ focused ? 'focused' : '' }`}>&#xe62b;</i>
-                {showSearchInfo()}
-            </SearchWrapper>
-            <NavItem className="right">登录</NavItem>
-            <NavItem className="right"></NavItem>
+                <NavItem className="left active">首页</NavItem>
+                <NavItem className="left">关注</NavItem>
+                <NavItem className="left">消息</NavItem>
+                <SearchWrapper>
+                    <NavSearch placeholder="搜索"
+                        className={focused ? 'focused' : ''}
+                        onFocus={() => handleFocus(hotSearch)}
+                        onBlur={handleBlur}
+                    >
+                    </NavSearch>
+                    <i className={`iconfont search ${ focused ? 'focused' : '' }`}>&#xe62b;</i>
+                    {showSearchInfo()}
+                </SearchWrapper>
+                <NavItem className="right">登录</NavItem>
+                <NavItem className="right"></NavItem>
             </Nav>
             <Addition>
                 <Button className="writing">

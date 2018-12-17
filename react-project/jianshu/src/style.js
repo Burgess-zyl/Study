@@ -44,5 +44,9 @@ const GlobalStyle = createGlobalStyle`
         border-collapse: collapse;
         border-spacing: 0;
     }
+    a {
+        color: #000;
+        text-decoration: none;
+    }
 `;
 export default GlobalStyle;

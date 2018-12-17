@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { actionCreators } from './store'
 import { HomeWrapper, HomeLeft, HomeRight } from './style'
 import Slide from './components/Slide'
 import List from './components/List'
@@ -20,6 +22,24 @@ class Home extends Component {
             </HomeWrapper>
         )
     }
+
+    componentDidMount () {
+        this.props.getArticleList()
+        this.props.getRecommendList()
+        this.props.getWriterList()
+    }
 }
 
-export default Home
+const mapDispatchToProps = (dispatch) => ({
+    getArticleList () {
+        dispatch(actionCreators.getArticleList())
+    },
+    getRecommendList () {
+        dispatch(actionCreators.getRecommendList())
+    },
+    getWriterList () {
+        dispatch(actionCreators.getWriterList())
+    }
+})
+
+export default connect(null, mapDispatchToProps)(Home)
