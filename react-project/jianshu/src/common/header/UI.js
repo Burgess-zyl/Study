@@ -10,7 +10,8 @@ import { HeaderWraper,
     SearchInfo,
     SearchInfoTitle,
     SearchInfoSwitch,
-    SearchInfoTag
+    SearchInfoTag,
+    ToTop
 } from './style'
 import { Link } from 'react-router-dom'
 
@@ -18,7 +19,8 @@ const HeaderUI = (props) => {
     const { focused,
         mouseState,
         handleFocus, 
-        handleBlur, 
+        handleBlur,
+        toTopState,
         hotSearch,
         handleMouseEnter,
         handleMouseLeave,
@@ -72,11 +74,43 @@ const HeaderUI = (props) => {
         }
     }
 
+    const showToTop = () => {
+        if (toTopState) {
+            return (
+                <ToTop onClick={() => toTop()}></ToTop>
+            )
+        } else {
+            return null
+        }
+    }
+
+    const toTop = () => {
+        let time = setInterval(() => {
+            // let top = document.body.scrollTop || document.documentElement.scrollTop
+            // let speed = top / 5
+            let pos = window.pageYOffset
+            let speed = pos / 5
+            console.log(pos)
+            if (pos > 0) {
+                window.scrollTo(0, pos - speed)
+            } else {
+                clearInterval(time)
+            }
+        }, 30)
+    }
+
     return (
         <HeaderWraper>
             <Link to="/">
                 <Logo/>
             </Link>
+            <Addition>
+                <Button className="writing">
+                    <i className="iconfont">&#xe616;</i>
+                    写文章
+                </Button>
+                <Button className="register">注册</Button>
+            </Addition>
             <Nav>
                 <NavItem className="left active">首页</NavItem>
                 <NavItem className="left">关注</NavItem>
@@ -94,13 +128,7 @@ const HeaderUI = (props) => {
                 <NavItem className="right">登录</NavItem>
                 <NavItem className="right"></NavItem>
             </Nav>
-            <Addition>
-                <Button className="writing">
-                    <i className="iconfont">&#xe616;</i>
-                    写文章
-                </Button>
-                <Button className="register">注册</Button>
-            </Addition>
+            {showToTop()}
         </HeaderWraper>
     );
 }

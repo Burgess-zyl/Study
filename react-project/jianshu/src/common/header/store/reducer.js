@@ -3,6 +3,7 @@ import { fromJS } from 'immutable'
 const defaultState = fromJS({
     focused: false,
     mouseState: false,
+    toTopState: false,
     page: 1,
     totalPage: 1,
     hotSearch: []
@@ -22,6 +23,8 @@ export default (state=defaultState, action) => {
             return state.set('mouseState', false)
         case actionTypes.SWITCH_INFO:
             return state.set('page', action.data)
+        case actionTypes.TOTOP_STATE:
+            return state.set('toTopState', action.data)
         default:
             return state
     }

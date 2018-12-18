@@ -1,4 +1,4 @@
-import { SEARCH_FOCUS, SEARCH_BLUR, GET_HOT_SEARCH, MOUSE_ENTER, MOUSE_LEAVE, SWITCH_INFO } from './actionTypes'
+import { SEARCH_FOCUS, SEARCH_BLUR, GET_HOT_SEARCH, MOUSE_ENTER, MOUSE_LEAVE, SWITCH_INFO, TOTOP_STATE } from './actionTypes'
 import axios from 'axios'
 import { fromJS } from 'immutable'
 
@@ -22,6 +22,11 @@ export const mouseEnter = () => ({
 
 export const mouseLeave = () => ({
     type: MOUSE_LEAVE
+})
+
+export const toTopState = (data) => ({
+    type: TOTOP_STATE,
+    data
 })
 
 export const switchSearchInfo = (data) => ({

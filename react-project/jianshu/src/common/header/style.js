@@ -2,15 +2,16 @@ import styled from 'styled-components'
 import logo from '../../static/logo.png'
 
 export const HeaderWraper = styled.div`
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 20px;
     height: 56px;
     border-bottom: 1px solid #f0f0f0;
 `
 export const Logo = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
+    float: left;
     width: 100px;
     height: 56px;
     background: url(${logo});
@@ -126,9 +127,7 @@ export const SearchInfoTag = styled.a`
 `
 
 export const Addition = styled.div`
-    position: absolute;
-    top: 0;
-    right: 0;
+    float: right;
     height: 56px;
 `
 
@@ -148,4 +147,15 @@ export const Button = styled.div`
         color: #fff;
         background: #ec6149;
     }
+`
+
+export const ToTop = styled.div`
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 52px;
+    height: 52px;
+    border: 1px solid #dcdcdc;
+    background: #fff;
+    cursor: pointer;
 `

@@ -4,6 +4,7 @@ import GlobalStyle from './style'
 import IconFont from './static/iconfont/iconfont'
 import Header from './common/header/index'
 import Home from './pages/home'
+import Detail from './pages/detail'
 import { Provider } from 'react-redux'
 import store from './store'
 
@@ -18,7 +19,7 @@ class App extends Component {
               <Fragment>
                 <Header />
                 <Route path="/" exact component={Home}></Route>
-                <Route path="/detail" exact render={() => <div>detail</div>}></Route>
+                <Route path="/detail" exact component={Detail}></Route>
               </Fragment>
             </BrowserRouter>
         </Provider>

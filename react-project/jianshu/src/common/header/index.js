@@ -12,6 +12,7 @@ class Header extends Component {
             handleFocus, 
             handleBlur,
             mouseState,
+            toTopState,
             handleMouseEnter, 
             handleMouseLeave,
             handleSwitch } = this.props
@@ -21,6 +22,7 @@ class Header extends Component {
                 page={page}
                 totalPage={totalPage}
                 mouseState={mouseState}
+                toTopState={toTopState}
                 handleFocus={handleFocus}
                 handleBlur={handleBlur}
                 hotSearch={hotSearch}
@@ -29,6 +31,12 @@ class Header extends Component {
                 handleSwitch={handleSwitch}
             />
         )
+    }
+    componentDidMount () {
+        this.bindScroll()
+    }
+    bindScroll () {
+        window.addEventListener('scroll', this.props.changeToTopState)
     }
 }
 
@@ -39,6 +47,7 @@ const mapStateToProps = (state) => {
         page: state.getIn(['header', 'page']),
         totalPage: state.getIn(['header', 'totalPage']),
         hotSearch: state.getIn(['header', 'hotSearch']),
+        toTopState: state.getIn(['header', 'toTopState'])
     }
 }
 
@@ -64,6 +73,14 @@ const mapDispatchToProps = (dispatch) => {
                 dispatch(actionCreators.switchSearchInfo(page + 1))
             } else {
                 dispatch(actionCreators.switchSearchInfo(1))
+            }
+        },
+        changeToTopState () {
+            let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+            if (scrollTop > 200) {
+                dispatch(actionCreators.toTopState(true))
+            } else {
+                dispatch(actionCreators.toTopState(false))
             }
         }
     }

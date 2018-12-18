@@ -48,5 +48,9 @@ const GlobalStyle = createGlobalStyle`
         color: #000;
         text-decoration: none;
     }
+    body {
+        padding-top: 56px!important;
+        box-sizing: border-box;
+    }
 `;
 export default GlobalStyle;
