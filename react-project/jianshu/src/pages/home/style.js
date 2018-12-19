@@ -49,6 +49,9 @@ export const ListInfo = styled.div`
         line-height: 27px;
         cursor: pointer;
         & a {
+            &:link {
+                color: #000;
+            }
             &:visited {
                 color: #969696;
             }

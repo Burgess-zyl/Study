@@ -100,7 +100,7 @@ const HeaderUI = (props) => {
     }
 
     return (
-        <HeaderWraper>
+        <HeaderWraper className="clearfix">
             <Link to="/">
                 <Logo/>
             </Link>
@@ -111,11 +111,11 @@ const HeaderUI = (props) => {
                 </Button>
                 <Button className="register">注册</Button>
             </Addition>
-            <Nav>
+            <Nav className="clearfix">
                 <NavItem className="left active">首页</NavItem>
                 <NavItem className="left">关注</NavItem>
                 <NavItem className="left">消息</NavItem>
-                <SearchWrapper>
+                <SearchWrapper className="clearfix">
                     <NavSearch placeholder="搜索"
                         className={focused ? 'focused' : ''}
                         onFocus={() => handleFocus(hotSearch)}

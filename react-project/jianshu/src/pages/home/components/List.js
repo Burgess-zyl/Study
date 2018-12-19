@@ -13,7 +13,7 @@ class List extends PureComponent {
                         <ListInfo>
                             {this.getImg(item.imgUrl)}
                             <h3 className="title">
-                                <Link to="/detail">{item.title}</Link>
+                                <Link to={`/detail/${item.id}`}>{item.title}</Link>
                             </h3>
                             <p className="desc">{item.content}</p>
                             <div className="meta">

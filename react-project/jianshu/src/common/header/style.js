@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import logo from '../../static/logo.png'
 
-export const HeaderWraper = styled.div`
+export const HeaderWraper = styled.nav`
     position: fixed;
     top: 0;
     left: 0;
@@ -9,6 +9,8 @@ export const HeaderWraper = styled.div`
     margin-bottom: 20px;
     height: 56px;
     border-bottom: 1px solid #f0f0f0;
+    background: #fff;
+    z-index: 999;
 `
 export const Logo = styled.div`
     float: left;
@@ -158,4 +160,5 @@ export const ToTop = styled.div`
     border: 1px solid #dcdcdc;
     background: #fff;
     cursor: pointer;
+    z-index: 999;
 `

@@ -9,7 +9,7 @@ import Writer from './components/Writer'
 class Home extends Component {
     render () {
         return (
-            <HomeWrapper>
+            <HomeWrapper className="clearfix">
                 <HomeLeft>
                     <Slide></Slide>
                     <List></List>

@@ -52,5 +52,13 @@ const GlobalStyle = createGlobalStyle`
         padding-top: 56px!important;
         box-sizing: border-box;
     }
+    .clearfix:before,
+    .clearfix:after {
+        content: '';
+        display: table;
+    }
+    .clearfix:after {
+        clear: both;
+    }
 `;
 export default GlobalStyle;
