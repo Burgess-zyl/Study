@@ -18,6 +18,7 @@ import { Link } from 'react-router-dom'
 const HeaderUI = (props) => {
     const { focused,
         mouseState,
+        loginState,
         handleFocus, 
         handleBlur,
         toTopState,
@@ -125,7 +126,13 @@ const HeaderUI = (props) => {
                     <i className={`iconfont search ${ focused ? 'focused' : '' }`}>&#xe62b;</i>
                     {showSearchInfo()}
                 </SearchWrapper>
-                <NavItem className="right">登录</NavItem>
+                {
+                    loginState ? <NavItem className="right">
+                        <Link to='/account'>退出</Link>
+                    </NavItem> : <NavItem className="right">
+                        <Link to='/account'>登录</Link>
+                    </NavItem>
+                }
                 <NavItem className="right"></NavItem>
             </Nav>
             {showToTop()}

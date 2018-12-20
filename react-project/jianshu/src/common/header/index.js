@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { actionCreators } from './store'
+import { actionCreators  as accountActionCreators} from '../../pages/account/store'
 import HeaderUI from './UI'
 
 class Header extends Component {
@@ -15,13 +16,16 @@ class Header extends Component {
             toTopState,
             handleMouseEnter, 
             handleMouseLeave,
+            accountState,
+            loginState,
             handleSwitch } = this.props
         return (
-            <HeaderUI 
+            !accountState && <HeaderUI 
                 focused={focused}
                 page={page}
                 totalPage={totalPage}
                 mouseState={mouseState}
+                loginState={loginState}
                 toTopState={toTopState}
                 handleFocus={handleFocus}
                 handleBlur={handleBlur}
@@ -31,6 +35,10 @@ class Header extends Component {
                 handleSwitch={handleSwitch}
             />
         )
+    }
+    componentWillMount () {
+        console.log('::::')
+        // this.props.changeAccountState(false)
     }
     componentDidMount () {
         this.bindScroll()
@@ -47,7 +55,9 @@ const mapStateToProps = (state) => {
         page: state.getIn(['header', 'page']),
         totalPage: state.getIn(['header', 'totalPage']),
         hotSearch: state.getIn(['header', 'hotSearch']),
-        toTopState: state.getIn(['header', 'toTopState'])
+        toTopState: state.getIn(['header', 'toTopState']),
+        accountState: state.getIn(['account', 'accountState']),
+        loginState: state.getIn((['account', 'loginState']))
     }
 }
 
@@ -82,6 +92,10 @@ const mapDispatchToProps = (dispatch) => {
             } else {
                 dispatch(actionCreators.toTopState(false))
             }
+        },
+        changeAccountState (state) {
+            console.log('()()())')
+            dispatch(accountActionCreators.changeAccountState(state))
         }
     }
 }

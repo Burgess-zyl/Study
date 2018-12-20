@@ -52,6 +52,9 @@ const GlobalStyle = createGlobalStyle`
         padding-top: 56px!important;
         box-sizing: border-box;
     }
+    div, input {
+        box-sizing: border-box;
+    }
     .clearfix:before,
     .clearfix:after {
         content: '';
