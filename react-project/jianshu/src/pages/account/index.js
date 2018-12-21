@@ -13,7 +13,9 @@ import * as actionCreators from './store/actionCreators'
 class Account extends PureComponent {
     render () {
         const { loginState } = this.props
-        if (!loginState) {
+        if (loginState) {
+            return <Redirect to="/" />
+        } else {
             return (
                 <Wraper>
                     <Logo>
@@ -77,14 +79,14 @@ class Account extends PureComponent {
                     </Box>
                 </Wraper>
             )
-        } else {
-            return <Redirect to="/"/>
         }
     }
     componentWillMount () {
+        console.log('account 开始mount')
         this.props.changeAccountState(!this.props.accountState)
     }
     componentWillUnmount () {
+        console.log('account 结束mount')
         this.props.changeAccountState(!this.props.accountState)
     }
 }

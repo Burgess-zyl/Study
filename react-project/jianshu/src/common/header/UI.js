@@ -23,6 +23,7 @@ const HeaderUI = (props) => {
         handleBlur,
         toTopState,
         hotSearch,
+        logout,
         handleMouseEnter,
         handleMouseLeave,
         handleSwitch,
@@ -127,8 +128,8 @@ const HeaderUI = (props) => {
                     {showSearchInfo()}
                 </SearchWrapper>
                 {
-                    loginState ? <NavItem className="right">
-                        <Link to='/account'>退出</Link>
+                    loginState ? <NavItem className="right" onClick={ () => logout() }>
+                            <Link to='/account'>退出</Link>
                     </NavItem> : <NavItem className="right">
                         <Link to='/account'>登录</Link>
                     </NavItem>

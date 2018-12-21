@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { actionCreators } from './store'
 import { actionCreators  as accountActionCreators} from '../../pages/account/store'
 import HeaderUI from './UI'
@@ -18,6 +19,7 @@ class Header extends Component {
             handleMouseLeave,
             accountState,
             loginState,
+            logout,
             handleSwitch } = this.props
         return (
             !accountState && <HeaderUI 
@@ -33,6 +35,7 @@ class Header extends Component {
                 handleMouseEnter={handleMouseEnter}
                 handleMouseLeave={handleMouseLeave}
                 handleSwitch={handleSwitch}
+                logout={logout}
             />
         )
     }
@@ -94,8 +97,10 @@ const mapDispatchToProps = (dispatch) => {
             }
         },
         changeAccountState (state) {
-            console.log('()()())')
             dispatch(accountActionCreators.changeAccountState(state))
+        },
+        logout () {
+            dispatch(accountActionCreators.logout())
         }
     }
 }

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Switch, } from 'react-router-dom'
 import GlobalStyle from './style'
 import IconFont from './static/iconfont/iconfont'
 import Header from './common/header/index'

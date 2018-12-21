@@ -20,7 +20,20 @@ export const login = (account, password) => {
                     const action = changeLoginState(true)
                     dispatch(action)
                 }
-                console.log(resp)
+            }
+        )
+    }
+}
+
+export const logout = (account, password) => {
+    return (dispatch) => {
+        axios.get(`/api/login.json?account=${account}&password=${password}`).then(
+            (resp) => {
+                const data = resp.data.data
+                if (data) {
+                    const action = changeLoginState(false)
+                    dispatch(action)
+                }
             }
         )
     }
