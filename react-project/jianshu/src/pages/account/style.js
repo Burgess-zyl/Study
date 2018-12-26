@@ -54,9 +54,13 @@ export const Title = styled.h4`
 export const Container = styled.div`
     form {
         margin-bottom: 30px;
-        .inputBox {
+        .input-box {
             position: relative;
             width: 100%;
+            .input-no-border {
+                border-bottom: none;
+                border-radius: 4px 4px 0 0;
+            }
             input {
                 width: 100%;
                 height: 50px;
@@ -67,14 +71,12 @@ export const Container = styled.div`
                 background-color: hsla(0,0%,71%,.1);
                 vertical-align: middle;
             }
-            &:first-child {
-                input:first-child {
-                    border-bottom: none;
-                    border-radius: 4px 4px 0 0;
-                }
-            }
         }
-        .rememberBtn {
+        .input-no-border {
+            border-bottom: none;
+            border-radius: 4px 4px 0 0;
+        }
+        .remember-btn {
             float: left;
             margin: 15px 0;
             span {
@@ -84,7 +86,7 @@ export const Container = styled.div`
                 vertical-align: middle;
             }
         }
-        .forgetBtn {
+        .forget-btn {
             float: right;
             position: relative;
             margin: 15px 0;
@@ -92,7 +94,7 @@ export const Container = styled.div`
             a {
                 color: #999;
             }
-            .dropdownMenu {
+            .dropdown-menu {
                 top: 20px;
                 left: auto;
                 right: 0;
@@ -106,8 +108,7 @@ export const Container = styled.div`
                 }
             }
         }
-        .accountBtn {
-            background: #3194d0;
+        .account-btn {
             margin-top: 20px;
             width: 100%;
             padding: 9px 18px;
@@ -119,6 +120,12 @@ export const Container = styled.div`
             outline: none;
             display: block;
             clear: both;
+            &.login {
+                background: #3194d0;
+            }
+            &.register {
+                background: #42c02e;
+            }
         }
     }
 

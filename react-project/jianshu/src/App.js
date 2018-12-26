@@ -21,7 +21,7 @@ class App extends Component {
                 <Header />
                 <Route path="/" exact component={Home}></Route>
                 <Route path="/detail/:id" exact component={Detail}></Route>
-                <Route path="/account" exact component={Account}></Route>
+                <Route path="/account" component={Account}></Route>
               </Fragment>
           </BrowserRouter>
         </Provider>

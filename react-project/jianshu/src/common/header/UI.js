@@ -111,7 +111,10 @@ const HeaderUI = (props) => {
                     <i className="iconfont">&#xe616;</i>
                     写文章
                 </Button>
-                <Button className="register">注册</Button>
+                {
+                    !loginState ? <Button className="register">注册</Button>
+                        : null
+                }
             </Addition>
             <Nav className="clearfix">
                 <NavItem className="left active">首页</NavItem>
@@ -129,10 +132,11 @@ const HeaderUI = (props) => {
                 </SearchWrapper>
                 {
                     loginState ? <NavItem className="right" onClick={ () => logout() }>
-                            <Link to='/account'>退出</Link>
-                    </NavItem> : <NavItem className="right">
-                        <Link to='/account'>登录</Link>
-                    </NavItem>
+                                    <Link to='/account'>退出</Link>
+                                </NavItem>
+                                 : <NavItem className="right">
+                                    <Link to='/account/login'>登录</Link>
+                                </NavItem>
                 }
                 <NavItem className="right"></NavItem>
             </Nav>

@@ -19,8 +19,8 @@ export const HomeRight = styled.div`
     box-sizing: border-box;
     width: 280px;
 `
-export const SlideWrapper = styled.div`
-    margin-bottom: 10px;
+export const CarouselWrapper = styled.div`
+    margin-bottom: 35px;
     height: 270px;
     box-sizing: border-box;
     border-bottom: 1px solid #dcdcdc;

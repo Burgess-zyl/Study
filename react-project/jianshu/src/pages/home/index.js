@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { actionCreators } from './store'
-import { HomeWrapper, HomeLeft, HomeRight } from './style'
-import Slide from './components/Slide'
+import { HomeWrapper, HomeLeft, HomeRight, CarouselWrapper } from './style'
 import List from './components/List'
 import Recommend from './components/Recommend'
 import Writer from './components/Writer'
+import Carousel from '../../common/Carousel'
 class Home extends Component {
     render () {
         return (
             <HomeWrapper className="clearfix">
                 <HomeLeft>
-                    <Slide></Slide>
+                    <CarouselWrapper>
+                        <Carousel />
+                    </CarouselWrapper>
                     <List></List>
                 </HomeLeft>
                 <HomeRight>
