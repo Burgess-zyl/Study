@@ -20,8 +20,8 @@ export const HomeRight = styled.div`
     width: 280px;
 `
 export const CarouselWrapper = styled.div`
+    height: 210px;
     margin-bottom: 35px;
-    height: 270px;
     box-sizing: border-box;
     border-bottom: 1px solid #dcdcdc;
 `

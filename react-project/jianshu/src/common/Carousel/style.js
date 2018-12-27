@@ -4,14 +4,28 @@ export const Wrapper = styled.div`
     position: relative;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     &:hover .showControl {
         opacity: 1;
     }
 `
 
 export const Inner = styled.div`
-
+    position: absolute;
+    width: 100%;
+    height: 100%;
 `
+
+export const InnerItem = styled.div`
+    float: left;
+    height: 100%;
+    img {
+        width: 100%;
+        height: 100%;
+        vertical-align: middle;
+    }
+`
+
 export const Indicatiors = styled.ol`
     position: absolute;
     left: 40%;
