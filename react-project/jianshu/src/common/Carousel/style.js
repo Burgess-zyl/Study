@@ -32,15 +32,13 @@ export const InnerItem = styled.div`
     backface-visibility: hidden;
     perspective: 1000px;
     transition: transform .6s ease-in-out,-webkit-transform .6s ease-in-out;
-    // transition: left .6s ease-in-out;
     &.next {
         position: absolute;
         top: 0;
         display: block;
         width: 100%;
         &.left {
-\            transition: left .6s ease-in-out;
-            // transform: translate3d(-100%, 0, 0);
+\           transition: left .6s ease-in-out;
             left: 0%;
         }
     }
