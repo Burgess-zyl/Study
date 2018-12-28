@@ -14,13 +14,45 @@ export const Inner = styled.div`
     position: relative;
     width: 100%;
     height: 100%;
+    &.carousel-inner {
+        .next {
+            left: 100%;
+        }
+        .active {
+            display: block;
+            left: 0;
+        }
+    }
 `
 
 export const InnerItem = styled.div`
     position: relative;
     height: 100%;
     display: none;
+    backface-visibility: hidden;
+    perspective: 1000px;
     transition: transform .6s ease-in-out,-webkit-transform .6s ease-in-out;
+    // transition: left .6s ease-in-out;
+    &.next {
+        position: absolute;
+        top: 0;
+        display: block;
+        width: 100%;
+        &.left {
+\            transition: left .6s ease-in-out;
+            // transform: translate3d(-100%, 0, 0);
+            left: 0%;
+        }
+    }
+    &.active {
+        // transform: translateZ(0);
+        // left: 0;
+        // display: block;
+        &.left {
+            transform: translate3d(-100%, 0, 0);
+            left: 0;
+        }
+    }
     img {
         width: 100%;
         height: 100%;

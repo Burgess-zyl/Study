@@ -6,6 +6,7 @@ import {
     Indicatiors,
     Control
 } from './style'
+import { relative } from 'upath';
 class Carousel extends PureComponent {
     render () {
         return (
@@ -43,30 +44,31 @@ class Carousel extends PureComponent {
     }
     setCarouselState (index) {
         let items = this.getDom().inner
-        items[index].style.display = 'block'
+        items[index].classList.add('active')
     }
     autoPlay () {
-        let count = 1
+        let current = 1
         let items = this.getDom().inner
         setInterval (() => {
-            if (count === items.length) {
-                count = 0
+            let prev = current - 1
+            if (current === items.length) {
+                prev = current - 1
+                current = 0
             }
-            this.setCarouselState(count)
-            items[count - 1].style.left = 0
-            items[count - 1].style.transform = 'translate3d(-100%, 0, 0)'
-            items[count].style.transform = 'translateZ(0, 0)'
-            items[count].style.left= 0
-            items[count].style.position = 'absolute'
-            items[count].style.top = 0
-            items[count].style.width = '100%'
-
+            items[prev].classList.add('left')
+            items[current].classList.add('next')
             setTimeout(() => {
-                items[count].position = "relative"
-                items[count].display = "block"
+                items[current].classList.add('left')
+            })
+            setTimeout(() => {
+                items[prev].classList.remove('active', 'left')
+                items[current].classList.remove('next', 'left')
+                setTimeout(() => {
+                })
+                items[current].classList.add('active')
+                current++
             }, 500)
-            count++
-        }, 2000)
+        }, 3000)
     }
 }
 
