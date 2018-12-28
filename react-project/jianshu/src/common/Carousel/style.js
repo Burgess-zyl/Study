@@ -11,14 +11,16 @@ export const Wrapper = styled.div`
 `
 
 export const Inner = styled.div`
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 100%;
 `
 
 export const InnerItem = styled.div`
-    float: left;
+    position: relative;
     height: 100%;
+    display: none;
+    transition: transform .6s ease-in-out,-webkit-transform .6s ease-in-out;
     img {
         width: 100%;
         height: 100%;
