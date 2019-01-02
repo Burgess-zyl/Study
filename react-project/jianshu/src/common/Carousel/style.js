@@ -27,8 +27,9 @@ export const Inner = styled.div`
 
 export const InnerItem = styled.div`
     position: relative;
-    height: 100%;
     display: none;
+    height: 100%;
+    cursor: pointer;
     backface-visibility: hidden;
     perspective: 1000px;
     transition: transform .6s ease-in-out,-webkit-transform .6s ease-in-out;
@@ -78,6 +79,7 @@ export const Indicatiors = styled.ol`
     li {
         box-sizing: border-box;
         display: inline-block;
+        cursor: pointer;
         margin: 1px;
         margin-left: 7px;
         line-height: 20px;
@@ -97,20 +99,39 @@ export const Control = styled.div`
     opacity: 0;
     font-size: 20px;
     color: #fff;
+    cursor: pointer;
     text-align: center;
     text-shadow: 0 1px 2px rgba(0,0,0,.6);
     background-color: rgba(0,0,0,.4);
     height: 50px;
     width: 40px;
     top: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    i {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border: null;
+        border-color: red;
+        border-top: 2px solid;
+        border-left: 2px solid;
+    }
     &.left {
         border-top-right-radius: 6px;
         border-bottom-right-radius: 6px;
+        i {
+            transform: rotate(-45deg)
+        }
     }
     &.right {
         left: auto;
         right: 0;
         border-top-left-radius: 6px;
         border-bottom-left-radius: 6px;
+        i {
+            transform: rotate(135deg)
+        }
     }
 `
