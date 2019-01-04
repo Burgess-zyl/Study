@@ -40,7 +40,6 @@ class Header extends Component {
         )
     }
     componentWillMount () {
-        console.log('::::')
         // this.props.changeAccountState(false)
     }
     componentDidMount () {

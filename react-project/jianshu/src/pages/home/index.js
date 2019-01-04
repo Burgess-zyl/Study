@@ -29,6 +29,7 @@ class Home extends Component {
         this.props.getArticleList()
         this.props.getRecommendList()
         this.props.getWriterList()
+        this.props.getCarouselList()
     }
 }
 
@@ -41,6 +42,9 @@ const mapDispatchToProps = (dispatch) => ({
     },
     getWriterList () {
         dispatch(actionCreators.getWriterList())
+    },
+    getCarouselList () {
+        dispatch(actionCreators.getCarouselList())
     }
 })
 

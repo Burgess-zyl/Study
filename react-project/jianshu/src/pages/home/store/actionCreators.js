@@ -1,4 +1,4 @@
-import { GET_ARTICLE_LIST, GET_RECOMMEND_LIST, GET_WRITER_LIST } from './actionTypes'
+import { GET_ARTICLE_LIST, GET_RECOMMEND_LIST, GET_WRITER_LIST, GET_CAROUSEL_LIST } from './actionTypes'
 import { fromJS } from 'immutable'
 import axios from 'axios'
 
@@ -27,6 +27,11 @@ const writerList = (data) => ({
     data: fromJS(data)
 })
 
+const carouselList = (data) => ({
+    type: GET_CAROUSEL_LIST,
+    data: fromJS(data)
+})
+
 export const getArticleList = () => {
     return (dispatch) => {
         getList(dispatch, './api/article_list.json', articleList)
@@ -42,5 +47,11 @@ export const getRecommendList = () => {
 export const getWriterList = () => {
     return (dispatch) => {
         getList(dispatch, './api/writer_list.json', writerList)
+    }
+}
+
+export const getCarouselList = () => {
+    return (dispatch) => {
+        getList(dispatch, './api/carousel_list.json', carouselList)
     }
 }
